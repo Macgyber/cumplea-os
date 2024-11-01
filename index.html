@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños</title>
+  <style>
+    /* Estilo del fondo de arcoíris */
+    body {
+      background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+      background-size: 400% 400%;
+      animation: rainbow 15s ease infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Estilo del botón circular */
+    .heart-button {
+      position: relative;
+      width: 150px;
+      height: 135px;
+      background-color: red;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      animation: pulse 1s infinite;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+
+    .heart-button::before,
+    .heart-button::after {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 135px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart-button::before {
+      top: -75px;
+      left: 0;
+    }
+
+    .heart-button::after {
+      left: 75px;
+      top: 0;
+    }
+
+    /* Animación de pulso */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* Estilo SVG de felicitación */
+    .text {
+      font-size: 50px;
+      font-family: 'Arial', sans-serif;
+      fill: #ff69b4;
+    }
+    .name {
+      font-size: 50px;
+      font-family: 'Arial', sans-serif;
+      fill: #4CAF50;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes explode {
+      from { opacity: 1; transform: scale(0.5); }
+      to { opacity: 0; transform: scale(3); }
+    }
+    .fade-in {
+      animation: fadeIn 1s forwards;
+    }
+    .firework {
+      fill: none;
+      stroke-width: 4;
+      opacity: 0;
+      animation: explode 1.5s ease-out infinite;
+    }
+    .firework1 { stroke: #ff6347; animation-delay: 0.2s; }
+    .firework2 { stroke: #ffeb3b; animation-delay: 0.4s; }
+    .firework3 { stroke: #7c4dff; animation-delay: 0.6s; }
+    .firework4 { stroke: #1e88e5; animation-delay: 0.8s; }
+  </style>
+</head>
+<body>
+  
+  <div style="display: flex; justify-content: center; align-items: center; height: 70vh;">
+    <svg width="100%" height="400" viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg">
+      <text class="text fade-in" x="20" y="100">
+        <tspan>F</tspan>
+        <tspan dx="20">e</tspan>
+        <tspan dx="20">l</tspan>
+        <tspan dx="20">i</tspan>
+        <tspan dx="20">z</tspan>
+        <tspan dx="40">C</tspan>
+        <tspan dx="20">u</tspan>
+        <tspan dx="20">m</tspan>
+        <tspan dx="20">p</tspan>
+        <tspan dx="20">l</tspan>
+        <tspan dx="20">e</tspan>
+        <tspan dx="20">ñ</tspan>
+        <tspan dx="20">o</tspan>
+        <tspan dx="20">s</tspan>
+      </text>
+
+      <text class="name fade-in" x="430" y="170">
+        <tspan dx="40">E</tspan>
+        <tspan dx="20">V</tspan>
+        <tspan dx="20">E</tspan>
+        <tspan dx="20">L</tspan>
+        <tspan dx="20">Y</tspan>
+        <tspan dx="20">N</tspan>
+      </text>
+
+      <!-- Fuegos artificiales animados -->
+      <circle class="firework firework1" cx="200" cy="50" r="15"></circle>
+      <circle class="firework firework1" cx="600" cy="70" r="20"></circle>
+      <circle class="firework firework2" cx="400" cy="50" r="15"></circle>
+      <circle class="firework firework2" cx="250" cy="100" r="20"></circle>
+      <circle class="firework firework3" cx="500" cy="30" r="18"></circle>
+      <circle class="firework firework3" cx="150" cy="130" r="20"></circle>
+      <circle class="firework firework4" cx="700" cy="60" r="15"></circle>
+      <circle class="firework firework4" cx="300" cy="150" r="20"></circle>
+    </svg>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center; height: 30vh;">
+    <button class="heart-button" onclick="reproducirAudio()" title="Reproducir música de cumpleaños"></button>
+  </div>
+
+  <script>
+    let audioPlayed = false;
+    let audio;
+    function reproducirAudio() {
+      if (!audioPlayed) {
+        audio = new Audio('audio.mp3');
+        audio.play();
+        audioPlayed = true;
+        audio.addEventListener('ended', function() {
+          audioPlayed = false;
+        });
+      }
+    }
+  </script>
+</body>
+</html>
